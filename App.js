@@ -13,8 +13,11 @@ define(function App(require) {
       padding: 25vh;
 
       & > span {
-        border: .5rem solid;
+        box-sizing: border-box;
+        border-width: .5rem;
+        border-style: solid;
         border-radius: 2px;
+        transition: color 150ms ease;
         padding: .5rem;
         font-weight: bold;
         cursor: pointer;
