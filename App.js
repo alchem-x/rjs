@@ -2,7 +2,7 @@ function random255() {
     return Math.trunc(256 * Math.random())
 }
 
-define((require) => {
+define(function App(require) {
     const { css } = require('@emotion/css')
 
     const _App = css`
@@ -10,7 +10,7 @@ define((require) => {
       font-size: 64px;
       min-height: 100vh;
       text-align: center;
-      padding: 20vh;
+      padding: 25vh;
 
       & > span {
         border: .5rem solid;
