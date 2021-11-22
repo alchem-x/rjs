@@ -4,7 +4,7 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "start": "serve ."
+    "start": "serve src -l 3000"
   },
   "repository": {
     "type": "git",
@@ -17,10 +17,16 @@
   },
   "homepage": "https://github.com/cbdyzj/rjs#readme",
   "devDependencies": {
-    "serve": "^12.0.1"
+    "serve": "^13.0.2"
   },
   "dependencies": {
-    "@emotion/css": "^11.1.3",
+    "@ant-design/icons": "^4.7.0",
+    "@emotion/css": "^11.5.0",
+    "antd": "^4.17.1",
+    "htm": "^3.1.0",
+    "moment": "^2.29.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "requirejs": "^2.3.6",
     "vue": "^2.6.14"
   }
