@@ -2,8 +2,8 @@ function random255() {
     return Math.trunc(256 * Math.random())
 }
 
-function withCss(css) {
-    return css`
+define(['@emotion/css'], ({ css }) => {
+    const _App = css`
       box-sizing: border-box;
       font-size: 64px;
       min-height: 100vh;
@@ -22,12 +22,6 @@ function withCss(css) {
         font-family: sans-serif;
       }
     `
-}
-
-define(function App(require) {
-    const { css } = require('@emotion/css')
-
-    const _App = withCss(css)
 
     return {
         template: `

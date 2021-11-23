@@ -1,5 +1,12 @@
-function withCss(css) {
-    return css`
+define(['./html', 'react', '@emotion/css', './antd', './store', './ExtensionModal',], (
+    html,
+    { useReducer },
+    { css },
+    { RocketOutlined },
+    { reducer, initialState },
+    ExtensionModal
+) => {
+    const _ExtensionApp = css`
       position: fixed;
       right: 20px;
       top: 20px;
@@ -20,47 +27,14 @@ function withCss(css) {
         }
       }
     `
-}
 
-const initialState = {
-    extensionModalVisible: false,
-}
-
-function reducer(state, action) {
-    switch (action.type) {
-        case 'open':
-            return {
-                ...state,
-                extensionModalVisible: true,
-            }
-        case 'close':
-            return {
-                ...state,
-                extensionModalVisible: false,
-            }
-        default:
-            return state
-
-    }
-}
-
-define((require) => {
-    const { css } = require('@emotion/css')
-    const { useReducer } = require('react')
-    const html = require('./html')
-    const { RocketOutlined } = require('./antd')
-    const ExtensionModal = require('./ExtensionModal')
-
-    const _ExtensionApp = withCss(css)
-
-    return (props) => {
-
+    return () => {
         const [state, dispatch] = useReducer(reducer, initialState)
 
         return html`
             <div class=${_ExtensionApp}>
                 <${RocketOutlined} onClick=${() => dispatch({ type: 'open' })} className="rocket-button"/>
-                <${ExtensionModal} dispatch=${dispatch} visible=${state.extensionModalVisible}/>
+                <${ExtensionModal} dispatch=${dispatch} state=${state}/>
             </div>
         `
     }

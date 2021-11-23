@@ -1,11 +1,8 @@
-define((require) => {
-    const ReactDOM = require('react-dom')
-    const React = require('react')
-    const ExtensionApp = require('./ExtensionApp')
+define(['react', 'react-dom', './ExtensionApp'], (React, ReactDOM, ExtensionApp) => {
 
     return () => {
         const divRef = document.createElement('div')
         document.body.appendChild(divRef)
-        ReactDOM.render(React.createElement(ExtensionApp), divRef)
+        return ReactDOM.render(React.createElement(ExtensionApp), divRef)
     }
 })

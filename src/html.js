@@ -1,5 +1,3 @@
-define((require) => {
-    const React = require('react')
-    const htm = require('htm')
+define(['react', 'htm'], (React, htm) => {
     return htm.bind(React.createElement)
 })
