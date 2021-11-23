@@ -1,8 +1,8 @@
 define(() => {
     return (url) => {
-        const link = document.createElement('link')
-        link.rel = 'stylesheet'
-        link.href = url
-        document.head.appendChild(link)
+        const linkRef = document.createElement('link')
+        linkRef.rel = 'stylesheet'
+        linkRef.href = url
+        document.head.appendChild(linkRef)
     }
 })
