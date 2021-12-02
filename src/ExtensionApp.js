@@ -2,7 +2,7 @@ define(['./html', 'react', '@emotion/css', './antd', './store', './ExtensionModa
     html,
     { useReducer },
     { css },
-    { RocketOutlined },
+    { SmileOutlined },
     { reducer, initialState },
     ExtensionModal
 ) => {
@@ -11,7 +11,7 @@ define(['./html', 'react', '@emotion/css', './antd', './store', './ExtensionModa
       right: 20px;
       top: 20px;
 
-      .rocket-button {
+      .icon-button {
         font-size: 3rem;
         cursor: pointer;
         text-shadow: 0 2px 4px rgba(0, 0, 0, 0.10);
@@ -33,7 +33,7 @@ define(['./html', 'react', '@emotion/css', './antd', './store', './ExtensionModa
 
         return html`
             <div class=${_ExtensionApp}>
-                <${RocketOutlined} onClick=${() => dispatch({ type: 'open' })} className="rocket-button"/>
+                <${SmileOutlined} onClick=${() => dispatch({ type: 'open' })} className="icon-button"/>
                 <${ExtensionModal} dispatch=${dispatch} state=${state}/>
             </div>
         `

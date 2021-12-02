@@ -2,15 +2,16 @@ function random255() {
     return Math.trunc(256 * Math.random())
 }
 
-define(['@emotion/css'], ({ css }) => {
+define(['@emotion/css', './Combination'], ({ css }, Combination) => {
     const _App = css`
       box-sizing: border-box;
-      font-size: 64px;
+      font-size: 4rem;
       min-height: 100vh;
-      text-align: center;
-      padding: 25vh;
+      margin: 0 auto;
+      padding: 1rem;
+      max-width: calc(1000px + 1rem);
 
-      & > span {
+      & > span.rjs {
         box-sizing: border-box;
         border-width: .5rem;
         border-style: solid;
@@ -21,14 +22,20 @@ define(['@emotion/css'], ({ css }) => {
         cursor: pointer;
         font-family: sans-serif;
       }
+
+      & > .combination {
+        margin-top: .5rem;
+      }
     `
 
     return {
         template: `
           <div class="${_App}">
-          <span :style="textStyle" @click="setRandomColor">rjs</span>
+          <span class="rjs" :style="textStyle" @click="setRandomColor">rjs</span>
+          <Combination class="combination"/>
           </div>
         `,
+        components: { Combination, },
         data() {
             return {
                 color: '',
