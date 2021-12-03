@@ -37,7 +37,7 @@ define(['react', 'react-dom', '@emotion/css', './html'], (
 
 
         &.check {
-          color: #2da44e !important;
+          color: #2da44e;
           border-color: #2da44e;
 
           ::before {
