@@ -7,7 +7,9 @@ define(['./loadCss', './clipboardCopy', '@emotion/css', './ClipboardCopyButton']
     renderClipboardCopyButton,
 ) => {
 
-    loadCss(githubMarkdownCssUrl)
+    loadCss(githubMarkdownCssUrl).then(() => {
+        dispatchEvent(new CustomEvent(loadCss.name))
+    })
 
     const _Combination = css`
       h3 + div {
@@ -33,6 +35,11 @@ define(['./loadCss', './clipboardCopy', '@emotion/css', './ClipboardCopyButton']
           <h3 id="preact">Preact</h3>
           <div>
             <pre><code class="language-html" v-text="preactText"></code></pre>
+          </div>
+
+          <h3 id="htm">HTM</h3>
+          <div>
+            <pre><code class="language-html" v-text="htmText"></code></pre>
           </div>
 
           <h3 id="requirejs">RequireJS</h3>
@@ -83,11 +90,14 @@ define(['./loadCss', './clipboardCopy', '@emotion/css', './ClipboardCopyButton']
                     '<script src="https://unpkg.com/preact@10.6.2/hooks/dist/hooks.umd.js"></script>',
                 ].join('\n')
             },
+            htmText() {
+                return '<script src="https://unpkg.com/htm@3.1.0/dist/htm.umd.js"></script>'
+            },
             requirejsText() {
                 return '<script src="https://unpkg.com/requirejs@2.3.6/require.js"></script>'
             },
             tailwindCssText() {
-                return '<script src="https://unpkg.com/browse/tailwindcss@2.2.19/dist/tailwind.min.css"></script>'
+                return '<link rel="stylesheet" href="https://unpkg.com/browse/tailwindcss@2.2.19/dist/tailwind.min.css">'
             },
             emotionCssText() {
                 return '<script src="https://unpkg.com/@emotion/css@11.1.3/dist/emotion-css.umd.min.js"></script>'
@@ -99,15 +109,15 @@ define(['./loadCss', './clipboardCopy', '@emotion/css', './ClipboardCopyButton']
                 ].join('\n')
             },
             githubMarkdownCss() {
-                return '<script src="https://unpkg.com/github-markdown-css@5.0.0/github-markdown.css"></script>'
+                return '<link rel="stylesheet" href="https://unpkg.com/github-markdown-css@5.0.0/github-markdown.css">'
             },
             antDesignText() {
                 return [
-                    '<script src="https://unpkg.com/antd@4.17.1/dist/antd.min.css"></script>',
+                    '<link rel="stylesheet" href="https://unpkg.com/antd@4.17.1/dist/antd.min.css">',
                     '<script src="https://unpkg.com/antd@4.17.1/dist/antd.min.js"></script>',
                     '<script src="https://unpkg.com/@ant-design/icons@4.7.0/dist/index.umd.min.js"></script>',
                 ].join('\n')
-            }
+            },
         },
         mounted() {
             this.$el.querySelectorAll('h3 + div').forEach(it => {

@@ -22,6 +22,12 @@ requirejs.config({
     },
 })
 
+const loadCss = new Promise((resolve) => {
+    addEventListener('loadCss', () => {
+        resolve()
+    })
+})
+
 require(['vue', './App', 'react', 'react-dom', './ExtensionApp'], (
     Vue,
     App,
@@ -29,9 +35,11 @@ require(['vue', './App', 'react', 'react-dom', './ExtensionApp'], (
     { render },
     ExtensionApp,
 ) => {
-    new Vue(App).$mount('#app')
-    //
-    const divRef = document.createElement('div')
-    document.body.appendChild(divRef)
-    render(createElement(ExtensionApp), divRef)
+    loadCss.then(() => {
+        new Vue(App).$mount('#app')
+        //
+        const divRef = document.createElement('div')
+        document.body.appendChild(divRef)
+        render(createElement(ExtensionApp), divRef)
+    })
 })
