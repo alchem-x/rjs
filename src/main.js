@@ -1,12 +1,8 @@
 /**
- * strip suffix
+ * strip '.js'
  */
 function ss(strings, ...keys) {
-    return strings
-        .map((s, i) => i < keys.length ? s + keys[i] : s)
-        .join('')
-        .replace(/\.js$/, '')
-        .trim()
+    return strings.map((s, i) => s + (keys[i] || '')).join('').replace(/\.js$/, '')
 }
 
 requirejs.config({
