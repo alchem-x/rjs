@@ -8,7 +8,7 @@ define(['./loadCss', './clipboardCopy', '@emotion/css', './ClipboardCopyButton']
 ) => {
 
     loadCss(githubMarkdownCssUrl).then(() => {
-        dispatchEvent(new CustomEvent(loadCss.name))
+        document.dispatchEvent(new CustomEvent(loadCss.name))
     })
 
     const _Combination = css`
