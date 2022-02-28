@@ -8,6 +8,7 @@ fetch('./loadJs.js').then((it) => it.text()).then((it) => {
     new Function('define', it)(define)
     return loadJs('https://unpkg.com/requirejs@2.3.6/require.js')
 }).then(() => {
+
     function ss(strings, ...keys) {
         return strings.map((s, i) => s + (keys[i] ?? '')).join('').replace(/\.js$/, '')
     }
@@ -26,7 +27,7 @@ fetch('./loadJs.js').then((it) => it.text()).then((it) => {
     })
 
     const loadCss = new Promise((resolve) => {
-        addEventListener('loadCss', () => {
+        document.addEventListener('loadCss', () => {
             resolve()
         })
     })
