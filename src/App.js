@@ -22,6 +22,7 @@ define(['@emotion/css', './Combination'], ({ css }, Combination) => {
         font-weight: bold;
         cursor: pointer;
         font-family: sans-serif;
+        user-select: none;
       }
 
       & > .combination {
