@@ -7,9 +7,9 @@ define(['./loadCss', './clipboardCopy', '@emotion/css', './ClipboardCopyButton']
     renderClipboardCopyButton,
 ) => {
 
-    loadCss(githubMarkdownCssUrl).then(() => {
-        document.dispatchEvent(new CustomEvent(loadCss.name))
-    })
+    document.dispatchEvent(new CustomEvent('AsyncTask', {
+        detail: loadCss(githubMarkdownCssUrl),
+    }))
 
     const _Combination = css`
       h3 + div {

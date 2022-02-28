@@ -1,11 +1,11 @@
-fetch('./loadJs.js').then((it) => it.text()).then((it) => {
+fetch('./loadJs.js').then((it) => {
+    return it.text()
+}).then((it) => {
     let loadJs
 
-    function define(factory) {
+    new Function('define', it)((factory) => {
         loadJs = factory()
-    }
-
-    new Function('define', it)(define)
+    })
     return loadJs('https://unpkg.com/requirejs@2.3.6/require.js')
 }).then(() => {
 
@@ -26,12 +26,18 @@ fetch('./loadJs.js').then((it) => it.text()).then((it) => {
         },
     })
 
-    const loadCss = new Promise((resolve) => {
-        document.addEventListener('loadCss', () => {
-            resolve()
-        })
-    })
+    // Async Task
+    const asyncTaskList = []
 
+    asyncTaskList.handleAsyncTask = (ev) => {
+        if (ev.detail instanceof Promise) {
+            asyncTaskList.push(ev.detail)
+        }
+    }
+
+    document.addEventListener('AsyncTask', asyncTaskList.handleAsyncTask)
+
+    // main
     require(['vue', './App', 'react', 'react-dom', './ExtensionApp'], (
         Vue,
         App,
@@ -39,7 +45,11 @@ fetch('./loadJs.js').then((it) => it.text()).then((it) => {
         { render },
         ExtensionApp,
     ) => {
-        loadCss.then(() => {
+
+        Promise.all(asyncTaskList).then(() => {
+            document.removeEventListener('AsyncTask', asyncTaskList.handleAsyncTask)
+            asyncTaskList.length = 0
+            //
             new Vue(App).$mount('#app')
             //
             const divRef = document.createElement('div')
