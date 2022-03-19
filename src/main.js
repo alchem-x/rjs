@@ -20,7 +20,7 @@ fetch('./loadJs.js').then((it) => {
             '@emotion/css': ss`https://unpkg.com/@emotion/css@11.1.3/dist/emotion-css.umd.min.js`,
             'htm': ss`https://unpkg.com/htm@3.1.0/dist/htm.umd.js`,
             'moment': ss`https://unpkg.com/moment@2.29.1/min/moment.min.js`,
-            'vue': ss`https://unpkg.com/vue@2.6.14/dist/vue.min.js`,
+            'vue': ss`https://unpkg.com/vue-umd@3.2.31/dist/vue.umd.js`,
             'react': ss`https://unpkg.com/react@17.0.2/umd/react.production.min.js`,
             'react-dom': ss`https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js`,
         },
@@ -39,7 +39,7 @@ fetch('./loadJs.js').then((it) => {
 
     // main
     require(['vue', './App', 'react', 'react-dom', './ExtensionApp'], (
-        Vue,
+        { createApp },
         App,
         { createElement },
         { render },
@@ -50,7 +50,7 @@ fetch('./loadJs.js').then((it) => {
             document.removeEventListener('AsyncTask', asyncTaskList.handleAsyncTask)
             asyncTaskList.length = 0
             //
-            new Vue(App).$mount('#app')
+            createApp(App).mount('#app')
             //
             const divRef = document.createElement('div')
             document.body.appendChild(divRef)

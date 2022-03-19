@@ -77,17 +77,16 @@ define(['./loadCss', './clipboardCopy', '@emotion/css', './ClipboardCopyButton']
             reactText() {
                 return [
                     '<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>',
-
                     '<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>',
                 ].join('\n')
             },
             vueText() {
-                return '<script src="https://unpkg.com/vue@2.6.14/dist/vue.min.js"></script>'
+                return '<script src="https://unpkg.com/vue-umd@3.2.31/dist/vue.umd.js"></script>'
             },
             preactText() {
                 return [
-                    '<script src="https://unpkg.com/preact@10.6.2/dist/preact.umd.js"></script>',
-                    '<script src="https://unpkg.com/preact@10.6.2/hooks/dist/hooks.umd.js"></script>',
+                    '<script src="https://unpkg.com/preact@10.6.6/dist/preact.umd.js"></script>',
+                    '<script src="https://unpkg.com/preact@10.6.6/hooks/dist/hooks.umd.js"></script>',
                 ].join('\n')
             },
             htmText() {
@@ -97,10 +96,10 @@ define(['./loadCss', './clipboardCopy', '@emotion/css', './ClipboardCopyButton']
                 return '<script src="https://unpkg.com/requirejs@2.3.6/require.js"></script>'
             },
             tailwindCssText() {
-                return '<link rel="stylesheet" href="https://unpkg.com/browse/tailwindcss@2.2.19/dist/tailwind.min.css">'
+                return '<link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css">'
             },
             emotionCssText() {
-                return '<script src="https://unpkg.com/@emotion/css@11.1.3/dist/emotion-css.umd.min.js"></script>'
+                return '<script src="https://unpkg.com/@emotion/css@11.7.1/dist/emotion-css.umd.min.js"></script>'
             },
             styledComponentsText() {
                 return [
@@ -113,8 +112,8 @@ define(['./loadCss', './clipboardCopy', '@emotion/css', './ClipboardCopyButton']
             },
             antDesignText() {
                 return [
-                    '<link rel="stylesheet" href="https://unpkg.com/antd@4.17.1/dist/antd.min.css">',
-                    '<script src="https://unpkg.com/antd@4.17.1/dist/antd.min.js"></script>',
+                    '<link rel="stylesheet" href="https://unpkg.com/antd@4.19.1/dist/antd.min.css">',
+                    '<script src="https://unpkg.com/antd@4.19.1/dist/antd.min.js"></script>',
                     '<script src="https://unpkg.com/@ant-design/icons@4.7.0/dist/index.umd.min.js"></script>',
                 ].join('\n')
             },
