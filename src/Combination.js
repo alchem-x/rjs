@@ -1,4 +1,4 @@
-const githubMarkdownCssUrl = 'https://unpkg.com/github-markdown-css@5.0.0/github-markdown.css'
+const githubMarkdownCssUrl = 'https://unpkg.com/github-markdown-css@5.1.0/github-markdown.css'
 
 define(['./loadCss', './clipboardCopy', '@emotion/css', './ClipboardCopyButton'], (
     loadCss,
@@ -108,7 +108,7 @@ define(['./loadCss', './clipboardCopy', '@emotion/css', './ClipboardCopyButton']
                 ].join('\n')
             },
             githubMarkdownCss() {
-                return '<link rel="stylesheet" href="https://unpkg.com/github-markdown-css@5.0.0/github-markdown.css">'
+                return '<link rel="stylesheet" href="https://unpkg.com/github-markdown-css@5.1.0/github-markdown.css">'
             },
             antDesignText() {
                 return [
