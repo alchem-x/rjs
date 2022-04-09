@@ -32,7 +32,7 @@ define(['./html', 'react', '@emotion/css', './antd', './store', './ExtensionModa
         const [state, dispatch] = useReducer(reducer, initialState)
 
         return html`
-            <div class=${_ExtensionApp}>
+            <div className=${_ExtensionApp}>
                 <${SmileOutlined} onClick=${() => dispatch({ type: 'open' })} className="icon-button"/>
                 <${ExtensionModal} dispatch=${dispatch} state=${state}/>
             </div>

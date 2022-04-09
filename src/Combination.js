@@ -1,76 +1,50 @@
 const githubMarkdownCssUrl = 'https://unpkg.com/github-markdown-css@5.1.0/github-markdown.css'
 
-define(['./loadCss', './clipboardCopy', '@emotion/css', './ClipboardCopyButton'], (
+define(['./loadCss',  '@emotion/css', './GitHubCodeBlock', './html', 'react-dom'], (
     loadCss,
-    clipboardCopy,
     { css, cx },
-    renderClipboardCopyButton,
+    GitHubCodeBlock,
+    html,
+    { render },
 ) => {
-
     document.dispatchEvent(new CustomEvent('AsyncTask', {
         detail: loadCss(githubMarkdownCssUrl),
     }))
 
-    const _Combination = css`
-      h3 + div {
-        position: relative;
-      }
-    `
-
     return {
         template: `
-          <div class="${cx('markdown-body', _Combination)}">
+          <div class="markdown-body">
           <h2 id="combination">Combination</h2>
 
           <h3 id="react">React</h3>
-          <div>
-            <pre><code class="language-html" v-text="reactText"></code></pre>
-          </div>
+          <div></div>
 
           <h3 id="vue">Vue</h3>
-          <div>
-            <pre><code class="language-html" v-text="vueText"></code></pre>
-          </div>
+          <div></div>
 
           <h3 id="preact">Preact</h3>
-          <div>
-            <pre><code class="language-html" v-text="preactText"></code></pre>
-          </div>
+          <div></div>
 
           <h3 id="htm">HTM</h3>
-          <div>
-            <pre><code class="language-html" v-text="htmText"></code></pre>
-          </div>
+          <div></div>
 
           <h3 id="requirejs">RequireJS</h3>
-          <div>
-            <pre><code class="language-html" v-text="requirejsText"></code></pre>
-          </div>
+          <div></div>
 
           <h3 id="tailwindCss">Tailwind CSS</h3>
-          <div>
-            <pre><code class="language-html" v-text="tailwindCssText"></code></pre>
-          </div>
+          <div></div>
 
           <h3 id="emotionCss">Emotion</h3>
-          <div>
-            <pre><code class="language-html" v-text="emotionCssText"></code></pre>
-          </div>
+          <div></div>
 
           <h3 id="styledComponents">styled-components</h3>
-          <div>
-            <pre><code class="language-html" v-text="styledComponentsText"></code></pre>
-          </div>
+          <div></div>
 
           <h3 id="githubMarkdownCss">GitHub Markdown CSS</h3>
-          <div>
-            <pre><code class="language-html" v-text="githubMarkdownCss"></code></pre>
-          </div>
+          <div></div>
 
           <h3 id="antDesign">Ant Design</h3>
-          <div>
-            <pre><code class="language-html" v-text="antDesignText"></code></pre>
-          </div>
+          <div></div>
           </div>
         `,
         computed: {
@@ -119,11 +93,11 @@ define(['./loadCss', './clipboardCopy', '@emotion/css', './ClipboardCopyButton']
             },
         },
         mounted() {
-            this.$el.querySelectorAll('h3 + div').forEach(it => {
+            this.$el.querySelectorAll('h3 + div').forEach((it) => {
                 const id = it.previousElementSibling.id
-                renderClipboardCopyButton(it, {
-                    onClick: () => clipboardCopy(this[id + 'Text']),
-                })
+                render(html`
+                    <${GitHubCodeBlock} code=${this[id + 'Text']} codeClassName="language-html"/>
+                `, it)
             })
         },
     }

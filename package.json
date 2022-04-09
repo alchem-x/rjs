@@ -17,12 +17,14 @@
   },
   "homepage": "https://github.com/cbdyzj/rjs#readme",
   "devDependencies": {
+    "@babel/core": "^7.17.9",
     "serve": "^13.0.2"
   },
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
     "@emotion/css": "^11.5.0",
     "antd": "^4.17.1",
+    "github-code-block": "^0.0.3",
     "htm": "^3.1.0",
     "moment": "^2.29.1",
     "react": "^17.0.2",
